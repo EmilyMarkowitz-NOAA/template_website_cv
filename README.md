@@ -6,9 +6,9 @@ A template for your personal website and CV!
 Learn more about me! [Find my website here.](https://emilyhmarkowitz.github.io/emilyhmarkowitz/)
 
 
-# Directions -------------------------------------------------------------------
+# Directions
 
-simply run this ONE line of code to get your website!
+Simply run this ONE line of code to get your website!
 
 `source("./run.R")`
 
@@ -26,8 +26,8 @@ simply run this ONE line of code to get your website!
 
 1. Fork this repository so you can make as many changes as you want!
 2. Make copies of your own bio and cv_data google drive files and start filling them in. 
- - [EXAMPLE Word document with Bio](https://docs.google.com/document/d/1MbDrWQMzXn_3pxpuEnlHiX0juOhvwQtGGUrRLkkrczQ/edit?usp=sharing)
- - [EXAMPLE Spreadsheet with CV data](https://docs.google.com/spreadsheets/d/1fj0-LgxIgHC9qprjDfoyFqOUtUcWGMbMS28mCWf6as8)
+   - [EXAMPLE Word document with Bio](https://docs.google.com/document/d/1MbDrWQMzXn_3pxpuEnlHiX0juOhvwQtGGUrRLkkrczQ/edit?usp=sharing)
+   - [EXAMPLE Spreadsheet with CV data](https://docs.google.com/spreadsheets/d/1fj0-LgxIgHC9qprjDfoyFqOUtUcWGMbMS28mCWf6as8)
 3. Define yourname and yourwebsitelink in the "Knowns" section
 4. Rename pages as you like, but you must have an index and an about page. 
 5. Check that your gitignore includes your data folder, so it only shares what you want it to show. I inlcuded my data folder here for the sake of the example. 
