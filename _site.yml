@@ -1,0 +1,46 @@
+name: "`r yourname`"
+description: "`r yourname`"
+output_dir: "docs"
+navbar:
+  title: "<p><img id=\"logo\" style=\"width: 35px; display: inline-block; margin: 0px 0px\" src=\"img/logo.png\" /> YOUR NAME </p>"  
+  logo:
+    image: img/logo.png
+    href: "`r yourwebsitelink`"  
+  search: true
+  right:
+    - text: "Hi!"
+      icon: fa-coffee # check out favicons online for free graphics 
+      href: about.html
+    - text: "Research"
+      icon: fa-fish
+      href: research.html
+    - text: "Papers"
+      icon: fa-newspaper
+      href: papers.html
+    - text: "Experience"
+      icon: fa-briefcase
+      href: experience.html
+    - text: "Awards"
+      icon: fa-award
+      href: awards.html
+    - text: "Teaching"
+      icon: fa-chalkboard-teacher
+      href: teaching.html
+    - text: "CV"
+      icon: fa-file-pdf
+      href: cv.pdf
+favicon: favicon.ico
+base_url: "`r yourwebsitelink`"  
+output:
+  html_document:
+    theme: flatly # “cerulean”, “cosmo”, “flatly”, “journal”, “lumen”, “paper”, “readable”, “sandstone”, “simplex”, “spacelab”, “united”, and “yeti”
+    # highlight: monochrome # “default”, “tango”, “pygments”, “kate”, “monochrome”, “espresso”, “zenburn”, “haddock”, “breezedark”, “textmate”
+    includes:
+      in_header:
+      - header.html
+      after_body:
+      - footer.html
+    css: "styles.css"
+editor_options:
+  chunk_output_type: console
+repository_url: "`r yourwebsitelink`"  

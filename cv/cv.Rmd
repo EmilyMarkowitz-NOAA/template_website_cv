@@ -1,0 +1,167 @@
+---
+title: "`r paste0(yourname, ' - CV')`"
+author: "`r yourname`"
+date: "`r format(Sys.Date(), format='%B %d, %Y')`"
+params:
+  pdf_mode:
+    value: true
+  cache_data:
+    value: true
+output:
+  pagedown::html_resume:
+    css: ['styles_cv.css', 'resume']
+    self_contained: true
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  results='asis', 
+  echo = FALSE
+)
+
+CV <- readr::read_rds('cached_positions.rds')
+CV$entries_data <- 
+  CV$entries_data %>%
+    dplyr::filter(public_cv == TRUE)
+
+```
+
+
+```{r}
+# When in pdf export mode the little dots are unaligned, so fix that with some conditional CSS.
+if(params$pdf_mode) {
+    cat("
+<style>
+:root{
+  --decorator-outer-offset-left: -6.5px;
+}
+</style>")
+}
+```
+
+
+Aside
+================================================================================
+
+![](../img/profile.png)
+
+Contact {#contact}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %>% print_contact_info()
+```
+
+Language Skills {#skills}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %>% print_skill_bars()
+```
+
+Disclaimer {#disclaimer}
+--------------------------------------------------------------------------------
+
+Last updated on `r format(Sys.Date(), format='%B %d, %Y')`.
+
+Main
+================================================================================
+
+**`r yourname`** {#title}
+--------------------------------------------------------------------------------
+
+```{r}
+# Note the special double pipe so we modify the CV object in place
+CV %<>% print_text_block("intro") 
+```
+
+Education {data-icon=graduation-cap data-concise=true}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_section('education')
+```
+
+Work Experience {data-icon=suitcase}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_section('positions')
+```
+
+Research {data-icon=fish}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_section('research')
+```
+
+Teaching Experience {data-icon=chalkboard-teacher}
+--------------------------------------------------------------------------------
+
+::: aside
+```{r}
+CV %<>% print_text_block('teaching_experience_aside')
+```
+:::
+
+```{r}
+CV %<>% print_section('teaching')
+```
+
+Mentorship {data-icon=user-plus}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_section('mentor')
+```
+
+Outreach {data-icon=ship}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_section('outreach')
+```
+
+
+Publications  {data-icon=newspaper}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_section('publications')
+```
+
+
+Selected Presentations {data-icon=book}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_section('presentations')
+```
+
+Awards and Scholarships  {data-icon=award}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_section('awards', 
+                      glue_template = "list")
+```
+
+Fellowships  {data-icon=project-diagram}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_section(section_id = 'fellowships', 
+                      glue_template = "list")
+
+```
+
+Professional Affiliations  {data-icon=school}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_section(section_id = 'prof_affil', 
+                      glue_template = "list")
+```
+
+

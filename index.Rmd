@@ -1,0 +1,53 @@
+---
+title: 'Welcome!'
+output:
+  html_document:
+    css: "styles_background.css"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning=FALSE, 
+                      error = FALSE, message = FALSE)
+```
+
+```{r, include = FALSE, eval = FALSE}
+#expressly for troubleshooting scripts, will not run in markdown (eval = FALSE)
+# sections <- c("index")
+# i<-1
+# rmarkdown::render(paste0("./", sections[i], ".Rmd"),
+#                 output_dir = "./docs/",
+#                 output_file = paste0(sections[i], ".html"))
+```
+
+
+<div class = "row">
+<div class = "col-md-7">
+
+<br>
+
+<div class="top-right" style="float: right; margin-right: 120px; color:white;" >
+  <h1 style="font-family: 'Roboto Slab', serif; font-weight: 900;" ><b>`r yourname`</b></h1>
+  <h3 style="color:white;" ><b>Cool Job Title</b></h3>
+  <br>
+  <p><i><font size="-1">I work at this place<br>
+  In this subgroup<br>
+  City, State, Zip Code</font></i></p>
+</div>
+
+</div>
+
+<div class = "col-md-4">
+
+
+![](img/profile.png){width=250px}
+
+</div>
+
+<div class = "col-md-1">
+
+</div>
+</div>
+
+<br>
+
+

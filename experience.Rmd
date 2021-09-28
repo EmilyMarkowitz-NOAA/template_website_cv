@@ -1,0 +1,63 @@
+---
+title: 'Experience and Education'
+description: "Experience"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning=FALSE, 
+                      error = FALSE, message = FALSE)
+# date: "`r Sys.Date()`"
+```
+
+
+```{r, include = FALSE, eval = FALSE}
+#expressly for troubleshooting scripts, will not run in markdown (eval = FALSE)
+sections <- c("experience")
+i<-1
+rmarkdown::render(paste0("./", sections[i], ".Rmd"),
+                output_dir = "./docs/",
+                output_file = paste0(sections[i], ".html"))
+```
+
+
+```{r}
+# Edit data from CV csv
+dat <- cv %>% 
+  dplyr::filter(page %in% "experience") 
+```
+
+
+```{r, results='asis'}
+
+glue::glue('<br>
+
+<div class="boxed">
+
+## {dat$title}
+
+<div class = "row">
+<div class = "col-md-3">
+
+{dat$images}
+
+</div>
+
+<div class = "col-md-9">
+
+#### **{dat$loc}.**
+
+#### **{dat$timeline}. {dat$institution}.**
+
+{dat$description_bullets}
+
+<br>
+
+</div>
+</div>
+</div>
+
+')
+
+```
+
+

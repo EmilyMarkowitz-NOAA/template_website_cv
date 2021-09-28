@@ -1,0 +1,92 @@
+---
+title: "Research Interests"
+description: 'Research Interests'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning=FALSE, 
+                      error = FALSE, message = FALSE)
+# date: "`r Sys.Date()`"
+```
+
+
+```{r, include = FALSE, eval = FALSE}
+#expressly for troubleshooting scripts
+# sections <- c("research")
+# i<-1
+# rmarkdown::render(paste0("./", sections[i], ".Rmd"),
+#                 output_dir = "./docs/",
+#                 output_file = paste0(sections[i], ".html"))
+```
+
+
+```{r}
+dat0 <- cv %>% 
+  dplyr::filter(page %in% c("research"))  %>%
+  dplyr::arrange(section_long) %>%
+  dplyr::mutate(description_bullets = paste0(" - ", loc, 
+                                             ifelse(is.na(Links_inline),
+                                                    "",
+                                                    paste0("\n - ", Links_inline))))
+
+dat0$content <- glue::glue('
+
+<div class = "row">
+<div class = "col-md-2">
+
+![]({dat0$img}){{width="100px"}}
+
+</div>
+
+<div class = "col-md-10">
+
+### **{dat0$title}**. 
+
+{dat0$description_bullets} 
+
+<br>
+
+</div>
+</div>
+
+')
+
+dat <- data.frame()
+
+for (i in unique(dat0$section_long)) {
+
+  a <- dat0 %>%
+      dplyr::filter(section_long == i)
+
+  dat <- rbind.data.frame(dat,
+                          data.frame("section_long" = i,
+                                     "content" = paste(glue::glue('{a$content}
+\n\n'), collapse = "")))
+}
+
+```
+
+
+```{r, results='asis'}
+
+# 'Glue' your content together
+str <- glue::glue('<br>
+
+<div class="boxed">
+
+## {dat$section_long}
+
+<br>
+
+{dat$content}
+
+</div>
+
+')
+
+# Paste your formatted and finished content in your document. 
+str 
+```
+
+
+

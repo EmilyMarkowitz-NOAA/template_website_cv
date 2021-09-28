@@ -1,0 +1,89 @@
+html,body        {height:100%;}
+.wrapper         {width:100%;height:100%;margin:0 auto;background:#CCC}
+.h_iframe        {position:relative;}
+.h_iframe .ratio {display:block;width:100%;height:auto;}
+.h_iframe iframe {position:absolute;top:0;left:0;width:100%; height:100%;}
+
+.top-right {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+
+
+<style>
+  .col2 {
+    columns: 2 200px;         /* number of columns and width in pixels*/
+    -webkit-columns: 2 200px; /* chrome, safari */
+    -moz-columns: 2 200px;    /* firefox */
+  }
+  .col3 {
+    columns: 3 100px;
+    -webkit-columns: 3 100px;
+    -moz-columns: 3 100px;
+  }
+</style>
+
+/* https://rstudio4edu.github.io/rstudio4edu-book/rmd-fancy.html#select-and-import-your-google-fonts-script-1 */
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400,900");
+@import url('https://fonts.googleapis.com/css?family=Muli:400,400i,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;400;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Slab:wght@100;400;900&display=swap');
+
+body {
+    font-family: 'Lato';
+    color: #1f1f1f;
+    background-image: url("./img/background.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.title {
+    font-family: 'Muli';
+    font-weight: 900;
+    color: #34304a;
+    /* font-size: 15px; */
+}
+
+h2 {
+    font-family: 'Lato';
+    font-weight: 900;
+    color: #34304a;
+    /* font-size: 15px; */
+}
+
+
+h3 {
+    font-family: 'Lato';
+    font-weight: 400;
+    color: #34304a;
+    /* font-size: 15px; */
+}
+
+
+img {
+  display: inline-block;
+  margin: 10px 5px;
+}
+
+/*----------------NAVBAR ---------------*/
+
+.navbar-default {
+    background-color: #34304a;
+    color: #1f1f1f;
+    font-family: 'Lato';
+}
+
+
+/* The . with the boxed represents that it is a class */
+.boxed {
+  font-family.h2: 'Lato';
+  font-weight.h2: 400;
+  color.h2: #34304a;
+  background: #f2f2f2;
+  border: .5px #d3d3d3;
+  margin: 0px auto;
+  padding: 50px;
+  border-radius: 2px;
+}
+

@@ -1,0 +1,119 @@
+---
+title: 'Recent Publications and Presentations'
+description: 'Publications and Presentations'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning=FALSE, 
+                      error = FALSE, message = FALSE)
+```
+
+
+```{r, include = FALSE, eval = FALSE}
+#expressly for troubleshooting scripts
+# sections <- c("papers")
+# i<-1
+# rmarkdown::render(paste0("./", sections[i], ".Rmd"),
+#                 output_dir = "./docs/",
+#                 output_file = paste0(sections[i], ".html"))
+```
+  
+```{r}
+dat0 <- cv %>% 
+  dplyr::filter(page %in% "papers") %>% 
+  dplyr::mutate(content = paste0(loc, ". *", start, "*. **",
+                                   title, ".** ")) %>%
+  dplyr::mutate(content = ifelse((section == "publications" & description_1 != "N/A"), 
+                                 paste0(content, description_1), 
+                                 content)) %>%
+  dplyr::mutate(content = ifelse((section == "publications" & Links != ""), 
+                                 paste0(content, " ", Links, ". "), 
+                                 content)) %>%  
+  dplyr::mutate(content = ifelse((section == "presentations" & !(is.na(description_bullets))),  
+                                 paste0(content, "\n\n", description_bullets), 
+                                 content)) %>%
+  dplyr::mutate(content = ifelse((section == "presentations" & Links_inline != ""), 
+                                 paste0(content, "\n\n - ", Links_inline), 
+                                 content)) %>%
+  dplyr::mutate(content = gsub(pattern = "..", replacement = ".", 
+                               x = content, 
+                               fixed = TRUE, useBytes = TRUE)) %>%
+  dplyr::mutate(content = gsub(pattern = ". .", replacement = ".", 
+                               x = content, 
+                               fixed = TRUE, useBytes = TRUE))
+
+dat2 <- data.frame()
+
+for (i in unique(dat0$section_long)) {
+
+  dat1 <- dat0 %>% 
+    dplyr::filter(section_long == i) 
+
+  for (ii in unique(dat1$start)) {
+
+    a <- dat1 %>% 
+      dplyr::filter(start == ii) %>%
+      dplyr::mutate(content = paste(glue::glue('{content}
+
+\n\n'), collapse = "")) %>%
+      dplyr::select(content) %>%
+      unique() %>%
+      as.character()
+    
+    dat2 <- rbind.data.frame(dat2, 
+                          data.frame(
+                            section_long = i, 
+                            timeline = ii,
+                            content = a))
+  
+  }
+}
+```
+
+
+```{r, results='asis'}
+# 'Glue' your content together
+str <- ""
+
+for (i in unique(dat2$section_long)){
+  
+dat <- dat2 %>% 
+  dplyr::filter(section_long == i)
+
+str <- paste0(str, '
+<br>
+
+<div class="boxed">
+
+## ',i,'
+
+<br>
+
+', paste0(glue::glue('
+<div class = "row">
+<div class = "col-md-2">
+
+#### {dat$timeline}
+
+</div>
+
+<div class = "col-md-10">
+
+{dat$content}
+
+<br>
+
+</div>
+</div>
+
+'), collapse = ""), '
+</div>
+
+', collapse = "")
+}
+
+# Paste your formatted and finished content in your document. 
+cat(str)
+
+```
+

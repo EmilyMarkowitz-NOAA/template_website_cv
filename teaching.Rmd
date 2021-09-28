@@ -1,0 +1,110 @@
+---
+title: 'Mentorship, Outreach, and Teaching'
+description: "Teaching"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning=FALSE, 
+                      error = FALSE, message = FALSE)
+```
+
+
+```{r, include = FALSE, eval = FALSE}
+#expressly for troubleshooting scripts, will not run in markdown (eval = FALSE)
+# sections <- c("teaching")
+# i<-1
+# rmarkdown::render(paste0("./", sections[i], ".Rmd"),
+#                 output_dir = "./docs/",
+#                 output_file = paste0(sections[i], ".html"))
+```
+
+
+*[Inspirational thought]*
+
+
+```{r}
+dat0 <- cv %>%
+  dplyr::filter(page %in% c("teaching"))  %>%
+  dplyr::mutate(description_bullets = paste0(description_bullets, 
+                                             ifelse(is.na(Links_inline),
+                                                    "",
+                                                    paste0("\n - ", Links_inline))))
+
+dat1 <- data.frame(section_long = dat0$section_long,
+                   content = glue::glue("
+
+**{dat0$title}**. {dat0$timeline}. {dat0$loc}.
+
+{dat0$description_bullets} 
+
+"))
+
+dat1 <- dat1 %>%
+  dplyr::mutate(content = 
+                  ifelse(substr(x = content,
+                                start = (nchar(content)-5),
+                                stop = nchar(content)) == "\n -  \n",
+                         substr(x = content,
+                                start = 1,
+                                stop = (nchar(content)-6)),
+                         content))
+
+dat <- data.frame()
+
+for (i in unique(dat0$section_long)) {
+  
+  a <- dat1 %>% 
+    dplyr::filter(section_long == i) 
+  
+  dat <- rbind.data.frame(dat, 
+                          data.frame("section_long" = i, 
+                                     "content" = paste(glue::glue('{a$content}
+\n\n'), collapse = "")))
+}
+
+
+# an image for each section
+dat$img <- c("img/yellowfin_sole.png", 
+             "img/yellowfin_sole.png", 
+             "img/yellowfin_sole.png")
+dat$img_txt <- c("Yellowfin sole are cool.", 
+                 "Yellowfin sole are cool.", 
+                 "Yellowfin sole are cool.")
+```
+
+
+```{r, results='asis'}
+
+# 'Glue' your content together
+str <- glue::glue('<br>
+
+<div class="boxed">
+
+<div class = "row">
+<div class = "col-md-3">
+
+![*{dat$img_txt}*]({dat$img}){{width="200px"}}
+
+</div>
+
+<div class = "col-md-9">
+
+## {dat$section_long}
+
+{dat$content}
+
+<br>
+
+</div>
+</div>
+</div>
+
+')
+
+# Paste your formatted and finished content in your document. 
+str 
+
+```
+
+
+
