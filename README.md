@@ -21,6 +21,7 @@ Simply run this ONE line of code to get your website!
 3. [The original inspiration for this project - how to make a reproducible CV with google drive](https://livefreeordichotomize.com/2019/09/04/building_a_data_driven_cv_with_r/)
 4. [More about making websites in R Markdown](https://www.emilyzabor.com/tutorials/rmarkdown_websites_tutorial.html)
 5. [The {distill} R package, for making beautiful R Markdown web pages](https://rstudio.github.io/distill/)
+6. [rstudio4edu: Make your RMD Fancy!](https://rstudio4edu.github.io/rstudio4edu-book/rmd-fancy.html#select-and-import-your-google-fonts-script-1)
 
 **In run.R**
 
