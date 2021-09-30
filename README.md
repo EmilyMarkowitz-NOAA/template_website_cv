@@ -12,7 +12,7 @@ Once everything in place, simply run this *ONE* line of code to get your final w
 
 ### Notes
 
-#### **Prep work and light reading
+#### Prep work and light reading
 
 1. [Authorize Googledrive in R](https://googledrive.tidyverse.org/reference/drive_auth.html)
 2. [Learn more about Git Hub Pages](https://pages.github.com/)
