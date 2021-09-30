@@ -15,7 +15,7 @@ Once everything in place, simply run this *ONE* line of code to get your final w
 #### Prep work and light reading
 
 1. [Authorize Googledrive in R](https://googledrive.tidyverse.org/reference/drive_auth.html)
-2. [Learn more about Git Hub Pages](https://pages.github.com/)
+2. [Learn more about creating a GitHub Page](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site)
 3. [Nick Strayer - livefreeordichotomize.com: The original inspiration for this project describing how to make a reproducible CV with google spreadsheets](https://livefreeordichotomize.com/2019/09/04/building_a_data_driven_cv_with_r/)
 4. [More about making websites in R Markdown](https://www.emilyzabor.com/tutorials/rmarkdown_websites_tutorial.html)
 5. [The {distill} R package, for making beautiful R Markdown web pages](https://rstudio.github.io/distill/)
@@ -41,9 +41,9 @@ Once everything in place, simply run this *ONE* line of code to get your final w
 
 #### Once all files are run and ready to be shared to GitHub Pages
 
-1. In your repo, go into settings > pages. There select Branch = "Main", Folder = "docs", and save. 
-2. A link should appear on the page with the location of your new GitHub page
-3. It might take a few minutes for the page to actually appear, so make a cup of tea and water your plants
+1. In your repo, go into settings > pages. There select Branch = "Main", Folder = "docs", and save. [Learn more about creating a GitHub Page, here.](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site)
+2. A link should appear on the page with the location of your new GitHub page. 
+3. It might take a few minutes for the page to actually appear, so take a mental break while making a cup of tea and watering your plants. 
 4. Check out your beautiful new site!
 
 
